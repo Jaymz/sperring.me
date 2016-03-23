@@ -1,0 +1,20 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Blog.Data Class Library",
+  "authors": [ "james.sperring" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {
+    "Microsoft.AspNet.Identity.EntityFramework": "3.0.0-rc1-final",
+    "EntityFramework.Commands": "7.0.0-*",
+    "EntityFramework.MicrosoftSqlServer": "7.0.0-rc1-final"
+  },
+  "commands": {
+    "ef": "EntityFramework.Commands"
+  },
+  "frameworks": {
+    "net451": { },
+    "dnxcore50": { }
+  }
+}
