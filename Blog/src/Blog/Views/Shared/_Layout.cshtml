@@ -37,7 +37,6 @@
                     <li><a href="https://www.twitter.com/jaymz87">twitter</a></li>
                     <li><a href="https://www.linkedin.com/in/jamessperring">linkedin</a></li>
                     <li><a href="mailto:james@sperring.me">contact</a></li>
-                    <li>@Html.ActionLink("Login", "Login", "Account")</li>
                 </ul>
             </nav>
         </div>
@@ -46,7 +45,9 @@
         @RenderBody()
     </main>
     <footer>
-        <p>&copy; 2016 - Blog</p>
+        <p>@{ await Html.RenderPartialAsync("_LoginPartial", null, null);}</p>
+
+        <p>&copy; 2016 - James Sperring</p>
     </footer>
 
     <environment names="Development">
