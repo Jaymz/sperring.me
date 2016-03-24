@@ -13,7 +13,7 @@ namespace Blog.Data.Context
     public class BlogContext : IdentityDbContext<Author>
     {
         protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            var config = new ConfigurationBuilder().Build();
+            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
             var defaultConnection = config["Data:DefaultConnection:ConnectionString"];
             optionsBuilder.UseSqlServer(defaultConnection);
         }
