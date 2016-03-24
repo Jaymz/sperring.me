@@ -19,7 +19,13 @@ namespace Blog.Controllers
         // GET: Posts
         public IActionResult Index()
         {
-            return View(_context.Posts.ToList());
+            return View(_context.Posts.Select(p => new Post() {
+                PrettyUrl = p.PrettyUrl,
+                CreatedTime = p.CreatedTime,
+                Content = p.Content.Substring(0, 100) + "...",
+                Title = p.Title,
+                Id = p.Id,
+            }).ToList());
         }
 
         // GET: Posts/Details/5

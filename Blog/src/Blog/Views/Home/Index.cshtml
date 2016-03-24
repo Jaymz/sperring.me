@@ -1,37 +1,12 @@
-﻿@{
+﻿@model IEnumerable<Blog.ViewModels.Posts.PostViewModel>
+@{
     ViewData["Title"] = "Home Page";
 }
 
-<article>
-    <h1 class="post-title"><a href="/article">Tab Action Bar with AppCompat shows both Fragments on ICS</a></h1>
+@foreach (var post in Model) {
+    <article>
+        <h1><a href="@post.PrettyUrl">@post.Title</a></h1>
 
-    <p>I’m writing an Android application using the Action Bar which needs to run on devices using API version 7 and up. It’s a pretty simple application and I want it to have Tab navigation. Getting this set up and working should be a very simple task. However, it’s taken me 2 evenings to get it to work.</p>
-
-    <p>That’s not quite true. I got it working following the instructions over on the Android Action Bar API Guide page within a few minutes. When it was installed on an emulator running Froyo, that is.</p>
-
-    <p>However, when it ran on my actual phone, running ICS, switching between tabs resulted in the contents of all visited tabs being displayed over the top of each other. The tabs which should not have been active were still visible, but could not be interacted with.</p>
-
-    <p>I spent a while playing with the Fragment Transactions, as adding a manual commit to the onTabUnselected callback resulted in the fragment switch working correctly… the first time. After a 2nd attempt, an exception was thrown due to commit being called more than once. I was on the right tracks though…</p>
-
-    <p>It turns out there is a bug with the v7 support library: Issue 58602: Support AppCompat – onTabUnselected does not call tx.commit() on ICS. The root cause being a missing fragment transaction commit in the onTabUnselected callback.</p>
-
-    <p>The bug has been closed, as it’s been fixed and will be included in a future release. Until that point however, the workaround is to add the following code after the last line inside the onTabUnselected callback:</p>
-
-<pre>
-<code lang="java">
-    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.ICE_CREAM_SANDWICH) {
-        try {
-            Method commit = tab.getClass().getDeclaredMethod(“commitActiveTransaction”);
-            commit.setAccessible(true);
-            commit.invoke(tab);
-        } catch (RuntimeException e) {
-            throw e;
-        } catch (Exception e) {
-            throw new RuntimeException(e);
-        }
-    }
-</code>
-</pre>
-
-    <p>Hopefully this will save you a few hours of banging your head against your keyboard!</p>
-</article>
+        <p>@Html.Raw(post.Content)</p>
+    </article>
+}

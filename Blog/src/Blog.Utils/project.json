@@ -1,0 +1,14 @@
+﻿{
+  "version": "1.0.0-*",
+  "description": "Blog.Utils Class Library",
+  "authors": [ "james.sperring" ],
+  "tags": [ "" ],
+  "projectUrl": "",
+  "licenseUrl": "",
+  "dependencies": {
+    "System.Runtime": "4.0.21-beta-23516"
+  },
+  "frameworks": {
+    "dnx451": { }
+  }
+}

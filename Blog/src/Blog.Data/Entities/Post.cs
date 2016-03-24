@@ -15,5 +15,6 @@ namespace Blog.Data.Entities
         public DateTime CreatedTime { get; set; }
         public DateTime UpdatedTime { get; set; }
         public virtual Author Author { get; set; }
+        public string PrettyUrl { get; set; }
     }   
 }

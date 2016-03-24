@@ -10,13 +10,6 @@
     padding-right: 15px;
 }
 
-/* Set widths on the form inputs since otherwise they're 100% wide */
-input,
-select,
-textarea {
-    max-width: 600px;
-}
-
 .header-content ul {
     padding-left: 0;
 }
@@ -33,6 +26,14 @@ textarea {
 .site-header {
     background: #2D3339;
     color: #ecede3;
+}
+
+.site-content.fullscreen {
+    padding: 0;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
 }
 
 .site-title {
@@ -64,6 +65,20 @@ footer ul {
         padding-left: 0;
     }
 
+.editor.fullscreen {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 100;
+    background-color: #FFF;
+    width: 100%;
+    min-height: 100%;
+}
+
+.editor .title {
+    width: 100%;
+}
+
 @media (max-width: 768px) {
     .site-header {
         padding: 80px;
@@ -82,6 +97,32 @@ footer ul {
         position: relative;
         bottom: 10px;
         left: 5%;
+    }
+
+    .editor {
+        width: 95%;    
+    }   
+
+    .content-editor {
+        height: 80vh;
+        margin-bottom: 24px;    
+    }
+
+    .editor .content {
+        width: 100%;
+        height: 80vh;
+        float: left;
+    }
+        .editor .content textarea {
+            height: 80vh;
+        }
+
+    .editor .content-preview {
+        width: 100%;
+        height: 80vh;
+        float: left;
+        overflow-y: scroll;
+        padding-right: 20px;
     }
 }
 
@@ -103,10 +144,36 @@ footer ul {
     }
 
     footer {
-        position: absolute;
+        position: fixed;
         bottom: 32px;
         left: 32px;
         color: #9a9b9c;
+    }
+
+    .editor {
+        width: 95%;    
+    }
+
+    .content-editor {
+        height: 80vh;
+        margin-bottom: 24px;    
+    }
+
+    .editor .content {
+        width: 48%;
+        height: 80vh;
+        float: left;
+    }
+        .editor .content textarea {
+            height: 80vh;
+        }
+
+    .editor .content-preview {
+        width: 48%;
+        height: 80vh;
+        float: right;
+        overflow-y: scroll;
+        padding-right: 20px;
     }
 }
 
@@ -125,9 +192,35 @@ footer ul {
     }
 
     footer {
-        position: absolute;
+        position: fixed;
         bottom: 32px;
         left: 32px;
         color: #9a9b9c;
+    }
+
+    .editor {
+        width: 95%;    
+    }
+
+    .content-editor {
+        height: 80vh;
+        margin-bottom: 24px;    
+    }
+
+    .editor .content {
+        width: 48%;
+        height: 80vh;
+        float: left;
+    }
+        .editor .content textarea {
+            height: 80vh;
+        }
+
+    .editor .content-preview {
+        width: 48%;
+        height: 80vh;
+        float: right;
+        overflow-y: scroll;
+        padding-right: 20px;
     }
 }

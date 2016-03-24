@@ -108,6 +108,24 @@ namespace Blog
                 routes.MapRoute(
                     name: "default",
                     template: "{controller=Home}/{action=Index}/{id?}");
+
+                routes.MapRoute(
+                    name: "pretty",
+                    template: "{prettyUrl}",
+                    defaults: new {
+                            controller = "Archive",
+                            action = "PrettyUrl"
+                        }
+                    );
+                routes.MapRoute(
+                    name: "archive",
+                    template: "Archive/{postDate}",
+                    defaults: new {
+                            controller = "Archive",
+                            action = "PostDate"
+                        }
+                    );
+                
             });
         }
 

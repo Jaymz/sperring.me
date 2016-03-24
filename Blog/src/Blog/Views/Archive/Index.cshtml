@@ -1,0 +1,10 @@
+﻿@model Blog.ViewModels.Posts.PostViewModel
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<article>
+    <h1><a href="@Model.PrettyUrl"></a>@Model.Title</h1>
+
+    <p>@Html.Raw(Model.Content)</p>
+</article>
