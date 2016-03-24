@@ -6,18 +6,13 @@ using System.Threading.Tasks;
 using Blog.Data.Entities;
 using Microsoft.AspNet.Identity.EntityFramework;
 using Microsoft.Data.Entity;
+using Microsoft.Data.Entity.Infrastructure;
 using Microsoft.Extensions.Configuration;
 
 namespace Blog.Data.Context
 {
     public class BlogContext : IdentityDbContext<Author>
     {
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder) {
-            var config = new ConfigurationBuilder().AddJsonFile("appsettings.json").Build();
-            var defaultConnection = config["Data:DefaultConnection:ConnectionString"];
-            optionsBuilder.UseSqlServer(defaultConnection);
-        }
-
         public DbSet<Post> Posts { get; set; }
         public DbSet<Status> PostStatus { get; set; }
         public DbSet<Tag> Tags { get; set; }

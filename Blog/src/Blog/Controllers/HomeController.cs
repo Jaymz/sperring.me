@@ -11,21 +11,27 @@ namespace Blog.Controllers
 {
     public class HomeController : Controller
     {
+        private BlogContext _context;
+        public HomeController(BlogContext context)
+        {
+            _context = context;
+        }
+
         public IActionResult Index()
         {
             var postList = new List<PostViewModel>();
-            using (var db = new BlogContext()) {
-                var markdown = new Markdown();
-                var posts = db.Posts.OrderByDescending(p => p.CreatedTime);
-                foreach (var post in posts) {
-                    postList.Add(new PostViewModel() {
-                        //Author = post.Author.FirstName + " " + post.Author.LastName,
-                        Content = markdown.Transform(post.Content),
-                        Title = post.Title,
-                        PublishDate = post.CreatedTime,
-                        PrettyUrl = post.PrettyUrl
-                    });
-                }
+            var markdown = new Markdown();
+            var posts = _context.Posts.OrderByDescending(p => p.CreatedTime);
+            foreach (var post in posts)
+            {
+                postList.Add(new PostViewModel()
+                {
+                    //Author = post.Author.FirstName + " " + post.Author.LastName,
+                    Content = markdown.Transform(post.Content),
+                    Title = post.Title,
+                    PublishDate = post.CreatedTime,
+                    PrettyUrl = post.PrettyUrl
+                });
             }
             return View(postList);
         }
