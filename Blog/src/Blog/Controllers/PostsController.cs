@@ -7,19 +7,14 @@ using Blog.Data.Entities;
 
 namespace Blog.Controllers
 {
-    public class PostsController : Controller
+    public class PostsController : BlogController
     {
-        private BlogContext _context;
-
-        public PostsController(BlogContext context)
-        {
-            _context = context;    
-        }
-
         // GET: Posts
+        public PostsController(BlogContext context) : base(context) {}
+
         public IActionResult Index()
         {
-            return View(_context.Posts.Select(p => new Post() {
+            return View(Context.Posts.Select(p => new Post() {
                 PrettyUrl = p.PrettyUrl,
                 CreatedTime = p.CreatedTime,
                 Content = p.Content.Substring(0, 100) + "...",
@@ -36,7 +31,7 @@ namespace Blog.Controllers
                 return HttpNotFound();
             }
 
-            Post post = _context.Posts.Single(m => m.Id == id);
+            Post post = Context.Posts.Single(m => m.Id == id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -58,8 +53,8 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Posts.Add(post);
-                _context.SaveChanges();
+                Context.Posts.Add(post);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(post);
@@ -73,7 +68,7 @@ namespace Blog.Controllers
                 return HttpNotFound();
             }
 
-            Post post = _context.Posts.Single(m => m.Id == id);
+            Post post = Context.Posts.Single(m => m.Id == id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -88,8 +83,8 @@ namespace Blog.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Update(post);
-                _context.SaveChanges();
+                Context.Update(post);
+                Context.SaveChanges();
                 return RedirectToAction("Index");
             }
             return View(post);
@@ -104,7 +99,7 @@ namespace Blog.Controllers
                 return HttpNotFound();
             }
 
-            Post post = _context.Posts.Single(m => m.Id == id);
+            Post post = Context.Posts.Single(m => m.Id == id);
             if (post == null)
             {
                 return HttpNotFound();
@@ -118,9 +113,9 @@ namespace Blog.Controllers
         [ValidateAntiForgeryToken]
         public IActionResult DeleteConfirmed(int id)
         {
-            Post post = _context.Posts.Single(m => m.Id == id);
-            _context.Posts.Remove(post);
-            _context.SaveChanges();
+            Post post = Context.Posts.Single(m => m.Id == id);
+            Context.Posts.Remove(post);
+            Context.SaveChanges();
             return RedirectToAction("Index");
         }
     }

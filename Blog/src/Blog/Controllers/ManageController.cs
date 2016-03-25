@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using System.Security.Claims;
+using Blog.Data.Context;
 using Blog.Data.Entities;
 using Microsoft.AspNet.Authorization;
 using Microsoft.AspNet.Identity;
@@ -14,7 +15,7 @@ using Blog.ViewModels.Manage;
 namespace Blog.Controllers
 {
     [Authorize]
-    public class ManageController : Controller
+    public class ManageController : BlogController
     {
         private readonly UserManager<Author> _userManager;
         private readonly SignInManager<Author> _signInManager;
@@ -22,12 +23,14 @@ namespace Blog.Controllers
         private readonly ISmsSender _smsSender;
         private readonly ILogger _logger;
 
+        public ManageController(BlogContext context) : base(context) { }
         public ManageController(
+        BlogContext context,
         UserManager<Author> userManager,
         SignInManager<Author> signInManager,
         IEmailSender emailSender,
         ISmsSender smsSender,
-        ILoggerFactory loggerFactory)
+        ILoggerFactory loggerFactory) : base(context)
         {
             _userManager = userManager;
             _signInManager = signInManager;

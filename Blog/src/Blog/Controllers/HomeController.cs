@@ -9,19 +9,15 @@ using Microsoft.AspNet.Mvc;
 
 namespace Blog.Controllers
 {
-    public class HomeController : Controller
+    public class HomeController : BlogController
     {
-        private BlogContext _context;
-        public HomeController(BlogContext context)
-        {
-            _context = context;
-        }
+        public HomeController(BlogContext context) : base(context) {}
 
         public IActionResult Index()
         {
             var postList = new List<PostViewModel>();
             var markdown = new Markdown();
-            var posts = _context.Posts.OrderByDescending(p => p.CreatedTime);
+            var posts = Context.Posts.OrderByDescending(p => p.CreatedTime);
             foreach (var post in posts)
             {
                 postList.Add(new PostViewModel()
