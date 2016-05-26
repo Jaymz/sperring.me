@@ -16,9 +16,14 @@ namespace Blog.Data.Context
         public DbSet<Post> Posts { get; set; }
         public DbSet<Status> PostStatus { get; set; }
         public DbSet<Tag> Tags { get; set; }
+        public DbSet<Author> Authors { get; set; } 
+
+        
 
         protected override void OnModelCreating(ModelBuilder builder) {
             builder.Entity<Post>().HasOne(t => t.Author);
+
+            builder.Entity<PostTag>().HasKey(x => new {x.PostId, x.TagId});
 
             base.OnModelCreating(builder);
         }

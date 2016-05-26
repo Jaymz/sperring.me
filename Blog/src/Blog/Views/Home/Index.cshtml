@@ -5,8 +5,13 @@
 
 @foreach (var post in Model) {
     <article>
-        <h1><a href="@post.PrettyUrl">@post.Title</a></h1>
+        <h1><a href="@post.PrettyUrl">@post.Title</a>
+        </h1>
 
         <p>@Html.Raw(post.Content)</p>
     </article>
+    <summary>
+        <a href="@post.PrettyUrl#disqus_thread"></a>
+    </summary>
 }
+

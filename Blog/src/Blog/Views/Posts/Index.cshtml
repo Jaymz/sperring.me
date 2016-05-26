@@ -1,4 +1,4 @@
-@model IEnumerable<Blog.Data.Entities.Post>
+@model IEnumerable<Blog.ViewModels.Posts.PostViewModel>
 
 @{
     ViewData["Title"] = "Index";
@@ -21,10 +21,10 @@
             @Html.DisplayNameFor(model => model.PrettyUrl)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.CreatedTime)
+            @Html.DisplayNameFor(model => model.PublishDate)
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.UpdatedTime)
+            @Html.DisplayNameFor(model => model.UpdatedDate)
         </th>
         <th></th>
     </tr>
@@ -41,10 +41,10 @@
             @Html.DisplayFor(modelItem => item.PrettyUrl)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.CreatedTime)
+            @Html.DisplayFor(modelItem => item.PublishDate)
         </td>
         <td>
-            @Html.DisplayFor(modelItem => item.UpdatedTime)
+            @Html.DisplayFor(modelItem => item.UpdatedDate)
         </td>
         <td>
             <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

@@ -18,10 +18,12 @@ namespace Blog.Controllers
             var post = Context.Posts.SingleOrDefault(p => p.PrettyUrl == prettyUrl);
             if (post != null)
                 return View("Index", new PostViewModel {
+                    Id = post.Id,
                     Content = markdown.Transform(post.Content),
                     Title = post.Title,
                     PrettyUrl = post.PrettyUrl,
-                    PublishDate = post.CreatedTime
+                    PublishDate = post.CreatedTime,
+                    //Tags = String.Join(", ", post.Tags.Select(t => t.Name))
                 });
 
             return RedirectToAction("Index", "Home");
