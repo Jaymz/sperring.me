@@ -1,0 +1,9 @@
+{
+  "ambientDependencies": {
+    "es6-shim": "github:DefinitelyTyped/DefinitelyTyped/es6-shim/es6-shim.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
+    "jasmine": "github:DefinitelyTyped/DefinitelyTyped/jasmine/jasmine.d.ts#7de6c3dd94feaeb21f20054b9f30d5dabc5efabd",
+    "jquery": "github:DefinitelyTyped/DefinitelyTyped/jquery/jquery.d.ts#31b39b6061383fd0bf0c8ce74c6c8ccc3d644d7a",
+    "oidc-token-manager": "github:DefinitelyTyped/DefinitelyTyped/oidc-token-manager/oidc-token-manager.d.ts#14fe4313f4a1cf69add3505a2ab1dbc690dc2116",
+    "rx-lite": "github:DefinitelyTyped/DefinitelyTyped/rx/rx-lite.d.ts#14fe4313f4a1cf69add3505a2ab1dbc690dc2116"
+  }
+}
